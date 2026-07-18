@@ -62,6 +62,21 @@ curl -fsSL https://raw.githubusercontent.com/waleedma56/GetReady/main/docker.sh 
 > wget -qO- https://raw.githubusercontent.com/waleedma56/GetReady/main/docker.sh | sudo bash
 > ```
 
+### `info.sh`
+A **read-only** colorful system dashboard. At a glance it shows the hostname, OS &
+kernel, uptime, CPU & load, memory and storage (with usage bars), network info
+(interface IPs, gateway, DNS and public IP), plus Docker and logged-in-user status.
+Makes **no changes** to the system and does **not** need root.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/waleedma56/GetReady/main/info.sh | bash
+```
+
+> `wget` alternative:
+> ```bash
+> wget -qO- https://raw.githubusercontent.com/waleedma56/GetReady/main/info.sh | bash
+> ```
+
 ---
 
 ## How the "single link" works
