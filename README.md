@@ -21,6 +21,7 @@ Controls:
 - **Space** — check / uncheck the highlighted item
 - **Enter** — activate the highlighted row (toggles an item, or triggers the buttons)
 - **`[ Install selected ]`** button — installs everything that's checked
+- **`[ System info ]`** button — shows the read-only [`info.sh`](#infosh) dashboard, then returns
 - **`[ Exit ]`** button (or `q` / `Esc`) — quit
 
 Missing items are pre-checked for you, so you can often just move to **`[ Install selected ]`**

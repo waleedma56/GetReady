@@ -5,7 +5,7 @@
 #   * Scans the system to see which components are already installed.
 #   * Shows a navigable checklist (GREEN = installed, RED = missing).
 #   * Move with Up/Down arrows, toggle with SPACE, activate with ENTER.
-#   * Selectable [ Install selected ] and [ Exit ] buttons at the bottom.
+#   * Selectable [ Install selected ], [ System info ] and [ Exit ] buttons.
 #
 # Run as root, straight from the web:
 #   curl -fsSL https://raw.githubusercontent.com/waleedma56/GetReady/main/menu.sh | sudo bash
@@ -101,6 +101,7 @@ build_rows() {
         ROW_KIND+=("comp");   ROW_REF+=("$i")
     done
     ROW_KIND+=("action"); ROW_REF+=("install")
+    ROW_KIND+=("action"); ROW_REF+=("info")
     ROW_KIND+=("action"); ROW_REF+=("exit")
 }
 
@@ -138,7 +139,11 @@ render() {
                     "$box" "$statcol" "$stat" "$RESET" "$label" "$DIM" "${DETAILS[$ref]}" "$RESET"
             fi
         else
-            if [ "$ref" = "install" ]; then label="[ Install selected ]"; else label="[ Exit ]"; fi
+            case "$ref" in
+                install) label="[ Install selected ]" ;;
+                info)    label="[ System info ]" ;;
+                *)       label="[ Exit ]" ;;
+            esac
             echo "----------------------------------------------------------"
             if [ "$r" -eq "$cur" ]; then
                 printf "%b>  %s%b\n" "$BOLD$REV" "$label" "$RESET"
@@ -219,6 +224,22 @@ run_selected() {
     enter_raw
 }
 
+# Run the read-only system dashboard, then return to the menu.
+show_info() {
+    leave_raw
+    printf '\033[H\033[J'
+    local dir
+    dir="$(cd "$(dirname "${BASH_SOURCE[0]:-.}")" 2>/dev/null && pwd || echo .)"
+    if [ -f "$dir/info.sh" ]; then
+        bash "$dir/info.sh"
+    else
+        curl -fsSL "$RAW_BASE/info.sh" | bash
+    fi
+    printf "\nPress Enter to return to the menu..."
+    IFS= read -r _ < /dev/tty || true
+    enter_raw
+}
+
 # --- Guards ---------------------------------------------------------------
 if [ "${EUID:-$(id -u)}" -ne 0 ]; then
     echo "This menu needs root to install packages. Re-run it as:"
@@ -269,6 +290,8 @@ while true; do
                 SEL[$ref]=$(( 1 - SEL[$ref] ))
             elif [ "$ref" = "install" ]; then
                 run_selected
+            elif [ "$ref" = "info" ]; then
+                show_info
             elif [ "$ref" = "exit" ]; then
                 break
             fi
