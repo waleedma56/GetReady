@@ -8,19 +8,24 @@ Each script is designed to be run **directly from a single link** — no cloning
 
 ## Quick start — the menu (recommended)
 
-One command gives you an interactive checklist that scans your machine, shows what's already
+One command gives you a navigable checklist that scans your machine, shows what's already
 installed (**green**) vs. missing (**red**), and lets you check/uncheck what to install:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/waleedma56/GetReady/main/menu.sh | sudo bash
 ```
 
-- Type a **number** to toggle an item on/off
-- `a` = select everything missing, `n` = deselect all
-- `i` = install the selected items, `r` = re-scan, `q` = quit
+Controls:
 
-Missing items are pre-checked for you, so you can often just hit `i`. The menu reads your
-keystrokes from the terminal, so it stays interactive even through the `curl | sudo bash` pipe.
+- **Up / Down** arrows (or `k` / `j`) — move the highlight
+- **Space** — check / uncheck the highlighted item
+- **Enter** — activate the highlighted row (toggles an item, or triggers the buttons)
+- **`[ Install selected ]`** button — installs everything that's checked
+- **`[ Exit ]`** button (or `q` / `Esc`) — quit
+
+Missing items are pre-checked for you, so you can often just move to **`[ Install selected ]`**
+and hit Enter. The menu reads keys from the terminal, so it stays interactive even through the
+`curl | sudo bash` pipe (no `whiptail`/`dialog` needed — pure bash, runs anywhere).
 
 ---
 
