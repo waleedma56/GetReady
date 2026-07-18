@@ -24,6 +24,21 @@ curl -fsSL https://raw.githubusercontent.com/waleedma56/GetReady/main/essentials
 > wget -qO- https://raw.githubusercontent.com/waleedma56/GetReady/main/essentials.sh | sudo bash
 > ```
 
+### `docker.sh`
+Installs **Docker Engine + Docker Compose (v2 plugin)** on **Ubuntu / Debian** from Docker's
+official apt repository, enables the service, adds your user to the `docker` group, then
+**verifies** the install (`docker --version`, `docker compose version`, daemon check, and a
+`hello-world` container smoke test).
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/waleedma56/GetReady/main/docker.sh | sudo bash
+```
+
+> `wget` alternative:
+> ```bash
+> wget -qO- https://raw.githubusercontent.com/waleedma56/GetReady/main/docker.sh | sudo bash
+> ```
+
 ---
 
 ## How the "single link" works
