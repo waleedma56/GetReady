@@ -6,6 +6,24 @@ Each script is designed to be run **directly from a single link** — no cloning
 
 ---
 
+## Quick start — the menu (recommended)
+
+One command gives you an interactive checklist that scans your machine, shows what's already
+installed (**green**) vs. missing (**red**), and lets you check/uncheck what to install:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/waleedma56/GetReady/main/menu.sh | sudo bash
+```
+
+- Type a **number** to toggle an item on/off
+- `a` = select everything missing, `n` = deselect all
+- `i` = install the selected items, `r` = re-scan, `q` = quit
+
+Missing items are pre-checked for you, so you can often just hit `i`. The menu reads your
+keystrokes from the terminal, so it stays interactive even through the `curl | sudo bash` pipe.
+
+---
+
 ## Scripts
 
 ### `essentials.sh`
