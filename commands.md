@@ -2,7 +2,7 @@
 
 ## Index
 
-1. [Users](#1-users) · 2. [System](#2-system) · 3. [Docker](#3-docker) · 4. [Network](#4-network) · 5. [Files](#5-files) · 6. [Processes](#6-processes) · 7. [Firewall](#7-firewall-ufw) · 8. [Git](#8-git) · 9. [Tar / Zip](#9-tar--zip) · 10. [Text Editing](#10-text-editing)
+1. [Users](#1-users) · 2. [System](#2-system) · 3. [Docker](#3-docker) · 4. [Network](#4-network) · 5. [Files](#5-files) · 6. [Processes](#6-processes) · 7. [Firewall](#7-firewall-ufw) · 8. [Git](#8-git) · 9. [SSH](#9-ssh) · 10. [Tar / Zip](#10-tar--zip) · 11. [Text Editing](#11-text-editing)
 
 ---
 
@@ -1064,7 +1064,111 @@ git config core.fileMode false
 
 ---
 
-## 9. Tar / Zip
+## 9. SSH
+
+1. **Connect to host**
+```bash
+ssh user@hostname
+```
+
+2. **Connect with key**
+```bash
+ssh -i ~/.ssh/key user@hostname
+```
+
+3. **Connect custom port**
+```bash
+ssh -p 2222 user@hostname
+```
+
+4. **Copy file to remote**
+```bash
+scp file.txt user@hostname:/path/
+```
+
+5. **Copy file from remote**
+```bash
+scp user@hostname:/path/file.txt ./
+```
+
+6. **Copy folder to remote**
+```bash
+scp -r folder user@hostname:/path/
+```
+
+7. **Rsync to remote**
+```bash
+rsync -avzP ./folder user@hostname:/path/
+```
+
+8. **Generate SSH key**
+```bash
+ssh-keygen -t rsa -b 4096
+```
+
+9. **Copy key to remote**
+```bash
+ssh-copy-id user@hostname
+```
+
+10. **Test key connection**
+```bash
+ssh -i ~/.ssh/key user@hostname "echo 'connected'"
+```
+
+11. **Add key to agent**
+```bash
+eval "$(ssh-agent -s)" && ssh-add ~/.ssh/key
+```
+
+12. **List keys in agent**
+```bash
+ssh-add -l
+```
+
+13. **Remote port forward**
+```bash
+ssh -L 8080:localhost:80 user@hostname
+```
+
+14. **Remote tunnel**
+```bash
+ssh -R 8080:localhost:80 user@hostname
+```
+
+15. **Jump host**
+```bash
+ssh -J jumpuser@jump host user@hostname
+```
+
+16. **Execute remote command**
+```bash
+ssh user@hostname "ls -la"
+```
+
+17. **Mount remote filesystem**
+```bash
+sshfs user@hostname:/path /mnt/point
+```
+
+18. **Unmount SSHFS**
+```bash
+fusermount -u /mnt/point
+```
+
+19. **Check remote uptime**
+```bash
+ssh user@hostname uptime
+```
+
+20. **X11 forward**
+```bash
+ssh -X user@hostname
+```
+
+---
+
+## 10. Tar / Zip
 
 1. **Create tar.gz**
 ```bash
@@ -1118,7 +1222,7 @@ unzip -l name.zip
 
 ---
 
-## 10. Text Editing
+## 11. Text Editing
 
 1. **Nano save and exit**
 ```
