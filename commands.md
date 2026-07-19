@@ -540,169 +540,169 @@ sudo iptables -L -n
 touch filename
 ```
 
-2. **Create directory**
-```bash
-mkdir dirname
-```
-
-3. **Rename file**
+2. **Rename file**
 ```bash
 mv oldname newname
 ```
 
-4. **Delete file**
+3. **Delete file**
 ```bash
 rm filename
 ```
 
-5. **Delete directory**
-```bash
-rm -rf dirname
-```
-
-6. **Move file**
-```bash
-mv source dest
-```
-
-7. **Copy file**
+4. **Copy file**
 ```bash
 cp source dest
 ```
 
-8. **List files**
+5. **Move file**
+```bash
+mv source dest
+```
+
+6. **List files**
 ```bash
 ls -la
 ```
 
-9. **List sorted by size**
+7. **List sorted by size**
 ```bash
 ls -lS
 ```
 
-10. **List sorted by date**
+8. **List sorted by date**
 ```bash
 ls -lt
 ```
 
-11. **Change ownership**
+9. **Change ownership**
 ```bash
 sudo chown user:group filename
 ```
 
-12. **Change permissions**
+10. **Change permissions**
 ```bash
 chmod 755 filename
 ```
 
-13. **Find file**
+11. **Find file**
 ```bash
 find / -name filename
 ```
 
-14. **Find large files**
+12. **Find large files**
 ```bash
 find / -type f -size +100M
 ```
 
-15. **Check file size**
+13. **Check file size**
 ```bash
 du -sh filename
 ```
 
-16. **Count lines in file**
+14. **Count lines in file**
 ```bash
 wc -l filename
 ```
 
-17. **View file contents**
+15. **View file contents**
 ```bash
 cat filename
 ```
 
-18. **View first lines**
+16. **View first lines**
 ```bash
 head filename
 ```
 
-19. **View last lines**
+17. **View last lines**
 ```bash
 tail filename
 ```
 
-20. **Follow file**
+18. **Follow file**
 ```bash
 tail -f filename
 ```
 
-21. **Search in file**
+19. **Search in file**
 ```bash
 grep "text" filename
 ```
 
-22. **Search recursively**
+20. **Search recursively**
 ```bash
 grep -r "text" /path
 ```
 
-23. **Search with line numbers**
+21. **Search with line numbers**
 ```bash
 grep -n "text" filename
 ```
 
-24. **Count occurrences**
+22. **Count occurrences**
 ```bash
 grep -c "text" filename
 ```
 
-25. **Compare files**
+23. **Compare files**
 ```bash
 diff file1 file2
 ```
 
-26. **Create link**
+24. **Create link**
 ```bash
 ln -s source linkname
 ```
 
-27. **Check file type**
+25. **Check file type**
 ```bash
 file filename
 ```
 
-28. **Split file**
+26. **Split file**
 ```bash
 split -l 1000 filename part_
 ```
 
-29. **Merge files**
+27. **Merge files**
 ```bash
 cat part_* > filename
 ```
 
-30. **Download file**
+28. **Download file**
 ```bash
 wget url -O filename
 ```
 
-31. **Download with resume**
+29. **Download with resume**
 ```bash
 wget -c url
 ```
 
-32. **Download with curl**
+30. **Download with curl**
 ```bash
 curl -O url
 ```
 
-33. **MD5 checksum**
+31. **MD5 checksum**
 ```bash
 md5sum filename
 ```
 
-34. **SHA256 checksum**
+32. **SHA256 checksum**
 ```bash
 sha256sum filename
+```
+
+33. **Create directory**
+```bash
+mkdir dirname
+```
+
+34. **Delete directory**
+```bash
+rm -rf dirname
 ```
 
 ---
