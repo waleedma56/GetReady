@@ -7,6 +7,20 @@
 
 set -euo pipefail
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+apt_install() {
+    for pkg in "$@"; do
+        if apt -qq install -y "$pkg" 2>/dev/null; then
+            echo -e "${GREEN}[✓]${NC} $pkg installed"
+        else
+            echo -e "${RED}[✗]${NC} $pkg failed"
+        fi
+    done
+}
+
 # --- Ensure we are running as root (apt needs it) -------------------------
 if [[ "${EUID}" -ne 0 ]]; then
     echo "This script must be run as root. Try: sudo bash essentials.sh"
@@ -21,15 +35,15 @@ echo "=========================================="
 
 echo ""
 echo "[1/5] Updating package lists..."
-apt update
+apt -qq update
 
 echo ""
 echo "[2/5] Upgrading installed packages..."
-apt -y full-upgrade
+apt -qq full-upgrade -y
 
 echo ""
 echo "[3/5] Installing essential packages..."
-apt -y install \
+apt_install \
     curl \
     wget \
     git \
@@ -44,11 +58,16 @@ apt -y install \
     software-properties-common \
     apt-transport-https \
     sudo \
-    bash-completion
+    bash-completion \
+    rsync \
+    tree \
+    ncdu \
+    python3 \
+    python3-pip
 
 echo ""
 echo "[4/5] Installing networking tools..."
-apt -y install \
+apt_install \
     net-tools \
     iputils-ping \
     dnsutils \
@@ -59,8 +78,8 @@ apt -y install \
 
 echo ""
 echo "[5/5] Cleaning up..."
-apt autoremove -y
-apt autoclean
+apt -qq autoremove -y
+apt -qq autoclean
 
 echo ""
 echo "=========================================="
