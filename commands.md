@@ -401,132 +401,137 @@ docker compose logs -f
 ip a
 ```
 
-2. **Ping host**
+2. **Check IP (hostname)**
+```bash
+hostname -I
+```
+
+3. **Ping host**
 ```bash
 ping -c 4 hostname
 ```
 
-3. **Scan ports**
+4. **Scan ports**
 ```bash
 nmap -sV localhost
 ```
 
-4. **Check open ports**
+5. **Check open ports**
 ```bash
 ss -tuln
 ```
 
-5. **Check gateway**
+6. **Check gateway**
 ```bash
 ip route
 ```
 
-6. **Check DNS**
+7. **Check DNS**
 ```bash
 cat /etc/resolv.conf
 ```
 
-7. **DNS lookup**
+8. **DNS lookup**
 ```bash
 dig domain.com
 ```
 
-8. **Reverse DNS**
+9. **Reverse DNS**
 ```bash
 dig -x IP
 ```
 
-9. **Check connections**
+10. **Check connections**
 ```bash
 netstat -tuln
 ```
 
-10. **Check ARP table**
+11. **Check ARP table**
 ```bash
 arp -a
 ```
 
-11. **Trace route**
+12. **Trace route**
 ```bash
 traceroute hostname
 ```
 
-12. **Trace with ICMP**
+13. **Trace with ICMP**
 ```bash
 traceroute -I hostname
 ```
 
-13. **Packet capture**
+14. **Packet capture**
 ```bash
 sudo tcpdump -i eth0
 ```
 
-14. **Capture specific port**
+15. **Capture specific port**
 ```bash
 sudo tcpdump -i eth0 port 80
 ```
 
-15. **Check bandwidth**
+16. **Check bandwidth**
 ```bash
 sudo iftop -i eth0
 ```
 
-16. **Show network stats**
+17. **Show network stats**
 ```bash
 netstat -s
 ```
 
-17. **Check interface stats**
+18. **Check interface stats**
 ```bash
 ip -s link
 ```
 
-18. **Set IP**
+19. **Set IP**
 ```bash
 sudo ip addr add 192.168.1.10/24 dev eth0
 ```
 
-19. **Bring interface up**
+20. **Bring interface up**
 ```bash
 sudo ip link set eth0 up
 ```
 
-20. **Bring interface down**
+21. **Bring interface down**
 ```bash
 sudo ip link set eth0 down
 ```
 
-21. **Show MAC address**
+22. **Show MAC address**
 ```bash
 ip link show eth0
 ```
 
-22. **Check public IP**
+23. **Check public IP**
 ```bash
 curl ifconfig.me
 ```
 
-23. **Resolve hostname**
+24. **Resolve hostname**
 ```bash
 host hostname
 ```
 
-24. **Wireless scan**
+25. **Wireless scan**
 ```bash
 sudo iwlist wlan0 scan
 ```
 
-25. **Block IP**
+26. **Block IP**
 ```bash
 sudo iptables -A INPUT -s IP -j DROP
 ```
 
-26. **Allow port**
+27. **Allow port**
 ```bash
 sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 ```
 
-27. **List iptables**
+28. **List iptables**
 ```bash
 sudo iptables -L -n
 ```
