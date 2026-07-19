@@ -60,23 +60,28 @@
 
 ## Docker
 
-1. **Add user to docker group**
+1. **Install Docker**
+   ```bash
+   curl -fsSL https://get.docker.com | sudo bash
+   ```
+
+2. **Add user to docker group**
    ```bash
    sudo usermod -aG docker username
    ```
 
-2. **Start Docker**
+3. **Start Docker**
    ```bash
    sudo systemctl start docker
    sudo systemctl enable docker
    ```
 
-3. **List containers**
+4. **List containers**
    ```bash
    docker ps -a
    ```
 
-4. **Remove image**
+5. **Remove image**
    ```bash
    docker rmi imagename
    ```
