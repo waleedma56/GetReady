@@ -2,7 +2,7 @@
 
 ## Index
 
-1. 👤 Users · 2. 🖥️ System · 3. 🐳 Docker · 4. 🌐 Network · 5. 📁 Files · 6. 🌐 File Access · 7. ⚙️ Processes · 8. 🔥 Firewall · 9. 📚 Git · 10. 🔐 SSH · 11. 📦 Tar / Zip · 12. ✏️ Text Editing
+1. 👤 [Users](#users) · 2. 🖥️ [System](#system) · 3. 🐳 [Docker](#docker) · 4. 🌐 [Network](#network) · 5. 📁 [Files](#files) · 6. 🌐 [File Access](#file-access) · 7. ⚙️ [Processes](#processes) · 8. 🔥 [Firewall](#firewall-ufw) · 9. 📚 [Git](#git) · 10. 🔐 [SSH](#ssh) · 11. 📦 [Tar / Zip](#tar--zip) · 12. ✏️ [Text Editing](#text-editing)
 
 ---
 
