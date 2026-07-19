@@ -1,1232 +1,1223 @@
 # Quick Commands
 
-## Users
+## Index
 
-1. **Create user**
-   ```bash
-   sudo adduser username
-   ```
-
-2. **Add to sudo group**
-   ```bash
-   sudo usermod -aG sudo username
-   ```
-
-3. **Create with SSH key**
-   ```bash
-   sudo useradd -m -s /bin/bash username
-   sudo mkdir /home/username/.ssh
-   sudo cp key.pub /home/username/.ssh/authorized_keys
-   sudo chmod 600 /home/username/.ssh/authorized_keys
-   sudo chown -R username:username /home/username/.ssh
-   ```
-
-4. **Disable root login**
-   ```bash
-   sudo sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
-   sudo systemctl restart sshd
-   ```
-
-5. **Delete user**
-   ```bash
-   sudo userdel username
-   ```
-
-6. **Lock user**
-   ```bash
-   sudo usermod -L username
-   ```
-
-7. **Change user password**
-   ```bash
-   sudo passwd username
-   ```
-
-8. **List all users**
-   ```bash
-   cat /etc/passwd
-   ```
-
-9. **Check user groups**
-   ```bash
-   groups username
-   ```
-
-10. **Switch user**
-    ```bash
-    su - username
-    ```
+1. [Users](#1-users) · 2. [System](#2-system) · 3. [Docker](#3-docker) · 4. [Network](#4-network) · 5. [Files](#5-files) · 6. [Processes](#6-processes) · 7. [Firewall](#7-firewall-ufw) · 8. [Git](#8-git) · 9. [Tar / Zip](#9-tar--zip) · 10. [Text Editing](#10-text-editing)
 
 ---
 
-## System
+## 1. Users
 
-1. **Update packages**
-   ```bash
-   sudo apt update && sudo apt upgrade -y
-   ```
+1.1. **Create user**
+```bash
+sudo adduser username
+```
 
-2. **Install package**
-   ```bash
-   sudo apt install packagename
-   ```
+1.2. **Add to sudo group**
+```bash
+sudo usermod -aG sudo username
+```
 
-3. **Remove package**
-   ```bash
-   sudo apt remove packagename
-   ```
+1.3. **Create with SSH key**
+```bash
+sudo useradd -m -s /bin/bash username
+sudo mkdir /home/username/.ssh
+sudo cp key.pub /home/username/.ssh/authorized_keys
+sudo chmod 600 /home/username/.ssh/authorized_keys
+sudo chown -R username:username /home/username/.ssh
+```
 
-4. **Check disk space**
-   ```bash
-   df -h
-   ```
+1.4. **Disable root login**
+```bash
+sudo sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+sudo systemctl restart sshd
+```
 
-5. **Check memory**
-   ```bash
-   free -h
-   ```
+1.5. **Delete user**
+```bash
+sudo userdel username
+```
 
-6. **System info**
-   ```bash
-   neofetch
-   ```
+1.6. **Lock user**
+```bash
+sudo usermod -L username
+```
 
-7. **Uptime**
-   ```bash
-   uptime
-   ```
+1.7. **Change user password**
+```bash
+sudo passwd username
+```
 
-8. **Check OS version**
-   ```bash
-   cat /etc/os-release
-   ```
+1.8. **List all users**
+```bash
+cat /etc/passwd
+```
 
-9. **Check kernel**
-   ```bash
-   uname -r
-   ```
+1.9. **Check user groups**
+```bash
+groups username
+```
 
-10. **List CPU info**
-    ```bash
-    lscpu
-    ```
-
-11. **List hardware**
-    ```bash
-    lshw
-    ```
-
-12. **Check load average**
-    ```bash
-    cat /proc/loadavg
-    ```
-
-13. **Check mounts**
-    ```bash
-    mount | column -t
-    ```
-
-14. **Edit cron jobs**
-    ```bash
-    sudo crontab -e
-    ```
-
-15. **List cron jobs**
-    ```bash
-    sudo crontab -l
-    ```
-
-16. **Enable service**
-    ```bash
-    sudo systemctl enable servicename
-    ```
-
-17. **Disable service**
-    ```bash
-    sudo systemctl disable servicename
-    ```
-
-18. **Check service status**
-    ```bash
-    sudo systemctl status servicename
-    ```
-
-19. **List running services**
-    ```bash
-    sudo systemctl list-units --type=service --state=running
-    ```
-
-20. **Check last reboot**
-    ```bash
-    last reboot
-    ```
-
-21. **Check failed services**
-    ```bash
-    sudo systemctl --failed
-    ```
-
-22. **View system log**
-    ```bash
-    sudo journalctl -xe
-    ```
-
-23. **View recent logs**
-    ```bash
-    sudo tail -f /var/log/syslog
-    ```
-
-24. **Check hostname**
-    ```bash
-    hostname
-    ```
-
-25. **Set hostname**
-    ```bash
-    sudo hostnamectl set-hostname newname
-    ```
-
-26. **Reboot**
-    ```bash
-    sudo reboot
-    ```
-
-27. **Shutdown**
-    ```bash
-    sudo shutdown -h now
-    ```
-
-28. **Schedule shutdown**
-    ```bash
-    sudo shutdown -h +60
-    ```
-
-29. **Cancel shutdown**
-    ```bash
-    sudo shutdown -c
-    ```
-
-30. **Clear memory cache**
-    ```bash
-    sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
-    ```
+1.10. **Switch user**
+```bash
+su - username
+```
 
 ---
 
-## Docker
+## 2. System
 
-1. **Install Docker**
-   ```bash
-   curl -fsSL https://get.docker.com | sudo bash
-   ```
+2.1. **Update packages**
+```bash
+sudo apt update && sudo apt upgrade -y
+```
 
-2. **Add user to docker group**
-   ```bash
-   sudo usermod -aG docker username
-   ```
+2.2. **Install package**
+```bash
+sudo apt install packagename
+```
 
-3. **Start Docker**
-   ```bash
-   sudo systemctl start docker
-   sudo systemctl enable docker
-   ```
+2.3. **Remove package**
+```bash
+sudo apt remove packagename
+```
 
-4. **List containers**
-   ```bash
-   docker ps -a
-   ```
+2.4. **Check disk space**
+```bash
+df -h
+```
 
-5. **List running containers**
-   ```bash
-   docker ps
-   ```
+2.5. **Check memory**
+```bash
+free -h
+```
 
-6. **Remove image**
-   ```bash
-   docker rmi imagename
-   ```
+2.6. **System info**
+```bash
+neofetch
+```
 
-7. **Remove container**
-   ```bash
-   docker rm containername
-   ```
+2.7. **Uptime**
+```bash
+uptime
+```
 
-8. **Stop container**
-   ```bash
-   docker stop containername
-   ```
+2.8. **Check OS version**
+```bash
+cat /etc/os-release
+```
 
-9. **Start container**
-   ```bash
-   docker start containername
-   ```
+2.9. **Check kernel**
+```bash
+uname -r
+```
 
-10. **Restart container**
-    ```bash
-    docker restart containername
-    ```
+2.10. **List CPU info**
+```bash
+lscpu
+```
 
-11. **View container logs**
-    ```bash
-    docker logs containername
-    ```
+2.11. **List hardware**
+```bash
+lshw
+```
 
-12. **Follow container logs**
-    ```bash
-    docker logs -f containername
-    ```
+2.12. **Check load average**
+```bash
+cat /proc/loadavg
+```
 
-13. **Execute command in container**
-    ```bash
-    docker exec -it containername bash
-    ```
+2.13. **Check mounts**
+```bash
+mount | column -t
+```
 
-14. **Build image**
-    ```bash
-    docker build -t imagename .
-    ```
+2.14. **Edit cron jobs**
+```bash
+sudo crontab -e
+```
 
-15. **Pull image**
-    ```bash
-    docker pull imagename
-    ```
+2.15. **List cron jobs**
+```bash
+sudo crontab -l
+```
 
-16. **Push image**
-    ```bash
-    docker push imagename
-    ```
+2.16. **Enable service**
+```bash
+sudo systemctl enable servicename
+```
 
-17. **List images**
-    ```bash
-    docker images
-    ```
+2.17. **Disable service**
+```bash
+sudo systemctl disable servicename
+```
 
-18. **Run container**
-    ```bash
-    docker run -it imagename bash
-    ```
+2.18. **Check service status**
+```bash
+sudo systemctl status servicename
+```
 
-19. **Run container in background**
-    ```bash
-    docker run -d imagename
-    ```
+2.19. **List running services**
+```bash
+sudo systemctl list-units --type=service --state=running
+```
 
-20. **Map port**
-    ```bash
-    docker run -d -p 8080:80 imagename
-    ```
+2.20. **Check last reboot**
+```bash
+last reboot
+```
 
-21. **List volumes**
-    ```bash
-    docker volume ls
-    ```
+2.21. **Check failed services**
+```bash
+sudo systemctl --failed
+```
 
-22. **Remove volume**
-    ```bash
-    docker volume rm volumename
-    ```
+2.22. **View system log**
+```bash
+sudo journalctl -xe
+```
 
-23. **List networks**
-    ```bash
-    docker network ls
-    ```
+2.23. **View recent logs**
+```bash
+sudo tail -f /var/log/syslog
+```
 
-24. **Inspect container**
-    ```bash
-    docker inspect containername
-    ```
+2.24. **Check hostname**
+```bash
+hostname
+```
 
-25. **Pause container**
-    ```bash
-    docker pause containername
-    ```
+2.25. **Set hostname**
+```bash
+sudo hostnamectl set-hostname newname
+```
 
-26. **Unpause container**
-    ```bash
-    docker unpause containername
-    ```
+2.26. **Reboot**
+```bash
+sudo reboot
+```
 
-27. **Kill container**
-    ```bash
-    docker kill containername
-    ```
+2.27. **Shutdown**
+```bash
+sudo shutdown -h now
+```
 
-28. **Prune unused containers**
-    ```bash
-    docker container prune
-    ```
+2.28. **Schedule shutdown**
+```bash
+sudo shutdown -h +60
+```
 
-29. **Prune unused images**
-    ```bash
-    docker image prune -a
-    ```
+2.29. **Cancel shutdown**
+```bash
+sudo shutdown -c
+```
 
-30. **Prune everything**
-    ```bash
-    docker system prune -a
-    ```
-
-31. **Docker Compose up**
-    ```bash
-    docker compose up -d
-    ```
-
-32. **Docker Compose down**
-    ```bash
-    docker compose down
-    ```
-
-33. **Docker Compose build**
-    ```bash
-    docker compose build
-    ```
-
-34. **Docker Compose logs**
-    ```bash
-    docker compose logs -f
-    ```
+2.30. **Clear memory cache**
+```bash
+sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+```
 
 ---
 
-## Network
+## 3. Docker
 
-1. **Check IP**
-   ```bash
-   ip a
-   ```
+3.1. **Install Docker**
+```bash
+curl -fsSL https://get.docker.com | sudo bash
+```
 
-2. **Ping host**
-   ```bash
-   ping -c 4 hostname
-   ```
+3.2. **Add user to docker group**
+```bash
+sudo usermod -aG docker username
+```
 
-3. **Scan ports**
-   ```bash
-   nmap -sV localhost
-   ```
+3.3. **Start Docker**
+```bash
+sudo systemctl start docker
+sudo systemctl enable docker
+```
 
-4. **Check open ports**
-   ```bash
-   ss -tuln
-   ```
+3.4. **List running containers**
+```bash
+docker ps
+```
 
-5. **Check gateway**
-   ```bash
-   ip route
-   ```
+3.5. **List all containers**
+```bash
+docker ps -a
+```
 
-6. **Check DNS**
-   ```bash
-   cat /etc/resolv.conf
-   ```
+3.6. **Run container**
+```bash
+docker run -it imagename bash
+```
 
-7. **DNS lookup**
-   ```bash
-   dig domain.com
-   ```
+3.7. **Run container in background**
+```bash
+docker run -d imagename
+```
 
-8. **Reverse DNS**
-   ```bash
-   dig -x IP
-   ```
+3.8. **Map port**
+```bash
+docker run -d -p 8080:80 imagename
+```
 
-9. **Check connections**
-   ```bash
-   netstat -tuln
-   ```
+3.9. **Stop container**
+```bash
+docker stop containername
+```
 
-10. **Check all connections**
-    ```bash
-    ss -tuln
-    ```
+3.10. **Start container**
+```bash
+docker start containername
+```
 
-11. **Checkarp table**
-    ```bash
-    arp -a
-    ```
+3.11. **Restart container**
+```bash
+docker restart containername
+```
 
-12. **Trace route**
-    ```bash
-    traceroute hostname
-    ```
+3.12. **Kill container**
+```bash
+docker kill containername
+```
 
-13. **Trace with ICMP**
-    ```bash
-    traceroute -I hostname
-    ```
+3.13. **Remove container**
+```bash
+docker rm containername
+```
 
-14. **Packet capture**
-    ```bash
-    sudo tcpdump -i eth0
-    ```
+3.14. **View container logs**
+```bash
+docker logs containername
+```
 
-15. **Capture specific port**
-    ```bash
-    sudo tcpdump -i eth0 port 80
-    ```
+3.15. **Follow container logs**
+```bash
+docker logs -f containername
+```
 
-16. **Check bandwidth**
-    ```bash
-    iftop -i eth0
-    ```
+3.16. **Execute command in container**
+```bash
+docker exec -it containername bash
+```
 
-17. **Show network stats**
-    ```bash
-    netstat -s
-    ```
+3.17. **List images**
+```bash
+docker images
+```
 
-18. **Check interface stats**
-    ```bash
-    ip -s link
-    ```
+3.18. **Pull image**
+```bash
+docker pull imagename
+```
 
-19. **Set IP**
-    ```bash
-    sudo ip addr add 192.168.1.10/24 dev eth0
-    ```
+3.19. **Build image**
+```bash
+docker build -t imagename .
+```
 
-20. **Bring interface up**
-    ```bash
-    sudo ip link set eth0 up
-    ```
+3.20. **Remove image**
+```bash
+docker rmi imagename
+```
 
-21. **Bring interface down**
-    ```bash
-    sudo ip link set eth0 down
-    ```
+3.21. **Push image**
+```bash
+docker push imagename
+```
 
-22. **Show MAC address**
-    ```bash
-    ip link show eth0
-    ```
+3.22. **Inspect container**
+```bash
+docker inspect containername
+```
 
-23. **Check public IP**
-    ```bash
-    curl ifconfig.me
-    ```
+3.23. **Pause container**
+```bash
+docker pause containername
+```
 
-24. **Resolve hostname**
-    ```bash
-    host hostname
-    ```
+3.24. **Unpause container**
+```bash
+docker unpause containername
+```
 
-25. **Wireless scan**
-    ```bash
-    sudo iwlist wlan0 scan
-    ```
+3.25. **List volumes**
+```bash
+docker volume ls
+```
 
-26. **Block IP**
-    ```bash
-    sudo iptables -A INPUT -s IP -j DROP
-    ```
+3.26. **Remove volume**
+```bash
+docker volume rm volumename
+```
 
-27. **Allow port**
-    ```bash
-    sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-    ```
+3.27. **List networks**
+```bash
+docker network ls
+```
 
-28. **List iptables**
-    ```bash
-    sudo iptables -L -n
-    ```
+3.28. **Prune containers**
+```bash
+docker container prune
+```
+
+3.29. **Prune images**
+```bash
+docker image prune -a
+```
+
+3.30. **Prune everything**
+```bash
+docker system prune -a
+```
+
+3.31. **Docker Compose up**
+```bash
+docker compose up -d
+```
+
+3.32. **Docker Compose down**
+```bash
+docker compose down
+```
+
+3.33. **Docker Compose build**
+```bash
+docker compose build
+```
+
+3.34. **Docker Compose logs**
+```bash
+docker compose logs -f
+```
 
 ---
 
-## Files
+## 4. Network
 
-1. **Find file**
-   ```bash
-   find / -name filename
-   ```
+4.1. **Check IP**
+```bash
+ip a
+```
 
-2. **Check file size**
-   ```bash
-   du -sh filename
-   ```
+4.2. **Ping host**
+```bash
+ping -c 4 hostname
+```
 
-3. **Compress folder**
-   ```bash
-   tar -czvf name.tar.gz folder/
-   ```
+4.3. **Scan ports**
+```bash
+nmap -sV localhost
+```
 
-4. **Extract tar**
-   ```bash
-   tar -xzvf name.tar.gz
-   ```
+4.4. **Check open ports**
+```bash
+ss -tuln
+```
 
-5. **Rsync sync**
-   ```bash
-   rsync -avz source/ destination/
-   ```
+4.5. **Check gateway**
+```bash
+ip route
+```
 
-6. **Copy file**
-   ```bash
-   cp source dest
-   ```
+4.6. **Check DNS**
+```bash
+cat /etc/resolv.conf
+```
 
-7. **Move file**
-   ```bash
-   mv source dest
-   ```
+4.7. **DNS lookup**
+```bash
+dig domain.com
+```
 
-8. **Delete file**
-   ```bash
-   rm filename
-   ```
+4.8. **Reverse DNS**
+```bash
+dig -x IP
+```
 
-9. **Delete directory**
-   ```bash
-   rm -rf dirname
-   ```
+4.9. **Check connections**
+```bash
+netstat -tuln
+```
 
-10. **Create directory**
-    ```bash
-    mkdir dirname
-    ```
+4.10. **Check ARP table**
+```bash
+arp -a
+```
 
-11. **List files**
-    ```bash
-    ls -la
-    ```
+4.11. **Trace route**
+```bash
+traceroute hostname
+```
 
-12. **List sorted by size**
-    ```bash
-    ls -lS
-    ```
+4.12. **Trace with ICMP**
+```bash
+traceroute -I hostname
+```
 
-13. **List sorted by date**
-    ```bash
-    ls -lt
-    ```
+4.13. **Packet capture**
+```bash
+sudo tcpdump -i eth0
+```
 
-14. **Change ownership**
-    ```bash
-    sudo chown user:group filename
-    ```
+4.14. **Capture specific port**
+```bash
+sudo tcpdump -i eth0 port 80
+```
 
-15. **Change permissions**
-    ```bash
-    chmod 755 filename
-    ```
+4.15. **Check bandwidth**
+```bash
+sudo iftop -i eth0
+```
 
-16. **Copy with progress**
-    ```bash
-    rsync -avzP source dest
-    ```
+4.16. **Show network stats**
+```bash
+netstat -s
+```
 
-17. **Find large files**
-    ```bash
-    find / -type f -size +100M
-    ```
+4.17. **Check interface stats**
+```bash
+ip -s link
+```
 
-18. **Count lines in file**
-    ```bash
-    wc -l filename
-    ```
+4.18. **Set IP**
+```bash
+sudo ip addr add 192.168.1.10/24 dev eth0
+```
 
-19. **View file contents**
-    ```bash
-    cat filename
-    ```
+4.19. **Bring interface up**
+```bash
+sudo ip link set eth0 up
+```
 
-20. **View first lines**
-    ```bash
-    head filename
-    ```
+4.20. **Bring interface down**
+```bash
+sudo ip link set eth0 down
+```
 
-21. **View last lines**
-    ```bash
-    tail filename
-    ```
+4.21. **Show MAC address**
+```bash
+ip link show eth0
+```
 
-22. **Follow file**
-    ```bash
-    tail -f filename
-    ```
+4.22. **Check public IP**
+```bash
+curl ifconfig.me
+```
 
-23. **Search in file**
-    ```bash
-    grep "text" filename
-    ```
+4.23. **Resolve hostname**
+```bash
+host hostname
+```
 
-24. **Search recursively**
-    ```bash
-    grep -r "text" /path
-    ```
+4.24. **Wireless scan**
+```bash
+sudo iwlist wlan0 scan
+```
 
-25. **Count occurrences**
-    ```bash
-    grep -c "text" filename
-    ```
+4.25. **Block IP**
+```bash
+sudo iptables -A INPUT -s IP -j DROP
+```
 
-26. **Show line numbers**
-    ```bash
-    grep -n "text" filename
-    ```
+4.26. **Allow port**
+```bash
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+```
 
-27. **Compare files**
-    ```bash
-    diff file1 file2
-    ```
-
-28. **Create link**
-    ```bash
-    ln -s source linkname
-    ```
-
-29. **List links**
-    ```bash
-    ls -la | grep ^l
-    ```
-
-30. **Check file type**
-    ```bash
-    file filename
-    ```
-
-31. **Split file**
-    ```bash
-    split -l 1000 filename part_
-    ```
-
-32. **Merge files**
-    ```bash
-    cat part_* > filename
-    ```
-
-33. **Download file**
-    ```bash
-    wget url -O filename
-    ```
-
-34. **Download with resume**
-    ```bash
-    wget -c url
-    ```
-
-35. **Download with curl**
-    ```bash
-    curl -O url
-    ```
-
-36. **MD5 checksum**
-    ```bash
-    md5sum filename
-    ```
-
-37. **SHA256 checksum**
-    ```bash
-    sha256sum filename
-    ```
+4.27. **List iptables**
+```bash
+sudo iptables -L -n
+```
 
 ---
 
-## Processes
+## 5. Files
 
-1. **List processes**
-   ```bash
-   ps aux | grep name
-   ```
+5.1. **Find file**
+```bash
+find / -name filename
+```
 
-2. **Kill process**
-   ```bash
-   kill pid
-   ```
+5.2. **Find large files**
+```bash
+find / -type f -size +100M
+```
 
-3. **Kill by name**
-   ```bash
-   pkill name
-   ```
+5.3. **Check file size**
+```bash
+du -sh filename
+```
 
-4. **Check resource usage**
-   ```bash
-   htop
-   ```
+5.4. **Compress folder (tar.gz)**
+```bash
+tar -czvf name.tar.gz folder/
+```
 
-5. **Top processes**
-   ```bash
-   top
-   ```
+5.5. **Extract tar**
+```bash
+tar -xzvf name.tar.gz
+```
 
-6. **Process tree**
-   ```bash
-   pstree
-   ```
+5.6. **Extract to folder**
+```bash
+tar -xzvf name.tar.gz -C folder/
+```
 
-7. **List process by user**
-   ```bash
-   ps -u username
-   ```
+5.7. **Rsync sync**
+```bash
+rsync -avz source/ destination/
+```
 
-8. **Background process**
-   ```bash
-   command &
-   ```
+5.8. **Rsync with progress**
+```bash
+rsync -avzP source dest
+```
 
-9. **No hangup background**
-   ```bash
-   nohup command &
-   ```
+5.9. **Copy file**
+```bash
+cp source dest
+```
 
-10. **List jobs**
-    ```bash
-    jobs
-    ```
+5.10. **Move file**
+```bash
+mv source dest
+```
 
-11. **Bring job to foreground**
-    ```bash
-    fg %1
-    ```
+5.11. **Delete file**
+```bash
+rm filename
+```
 
-12. **Send job to background**
-    ```bash
-    bg %1
-    ```
+5.12. **Delete directory**
+```bash
+rm -rf dirname
+```
 
-13. **Kill job**
-    ```bash
-    kill %1
-    ```
+5.13. **Create directory**
+```bash
+mkdir dirname
+```
 
-14. **Nice process**
-    ```bash
-    nice -n 10 command
-    ```
+5.14. **List files**
+```bash
+ls -la
+```
 
-15. **Change priority**
-    ```bash
-    renice 10 -p pid
-    ```
+5.15. **List sorted by size**
+```bash
+ls -lS
+```
 
-16. **Zombie processes**
-    ```bash
-    ps aux | grep zombie
-    ```
+5.16. **List sorted by date**
+```bash
+ls -lt
+```
 
-17. **Parent process**
-    ```bash
-    ps -o ppid= -p pid
-    ```
+5.17. **Change ownership**
+```bash
+sudo chown user:group filename
+```
 
-18. **Process runtime**
-    ```bash
-    ps -eo pid,etime
-    ```
+5.18. **Change permissions**
+```bash
+chmod 755 filename
+```
 
-19. **Check pid max**
-    ```bash
-    cat /proc/sys/kernel/pid_max
-    ```
+5.19. **Count lines in file**
+```bash
+wc -l filename
+```
 
-20. **List open files**
-    ```bash
-    lsof
-    ```
+5.20. **View file contents**
+```bash
+cat filename
+```
 
-21. **Files by process**
-    ```bash
-    lsof -p pid
-    ```
+5.21. **View first lines**
+```bash
+head filename
+```
 
-22. **Port by process**
-    ```bash
-    lsof -i :port
-    ```
+5.22. **View last lines**
+```bash
+tail filename
+```
 
----
+5.23. **Follow file**
+```bash
+tail -f filename
+```
 
-## Firewall (UFW)
+5.24. **Search in file**
+```bash
+grep "text" filename
+```
 
-1. **Enable**
-   ```bash
-   sudo ufw enable
-   ```
+5.25. **Search recursively**
+```bash
+grep -r "text" /path
+```
 
-2. **Disable**
-   ```bash
-   sudo ufw disable
-   ```
+5.26. **Search with line numbers**
+```bash
+grep -n "text" filename
+```
 
-3. **Allow port**
-   ```bash
-   sudo ufw allow 22
-   ```
+5.27. **Count occurrences**
+```bash
+grep -c "text" filename
+```
 
-4. **Deny port**
-   ```bash
-   sudo ufw deny 80
-   ```
+5.28. **Compare files**
+```bash
+diff file1 file2
+```
 
-5. **Status**
-   ```bash
-   sudo ufw status
-   ```
+5.29. **Create link**
+```bash
+ln -s source linkname
+```
 
-6. **Status verbose**
-   ```bash
-   sudo ufw status verbose
-   ```
+5.30. **Check file type**
+```bash
+file filename
+```
 
-7. **Allow service**
-   ```bash
-   sudo ufw allow ssh
-   ```
+5.31. **Split file**
+```bash
+split -l 1000 filename part_
+```
 
-8. **Deny service**
-   ```bash
-   sudo ufw deny http
-   ```
+5.32. **Merge files**
+```bash
+cat part_* > filename
+```
 
-9. **Allow IP**
-   ```bash
-   sudo ufw allow from 192.168.1.10
-   ```
+5.33. **Download file**
+```bash
+wget url -O filename
+```
 
-10. **Allow subnet**
-    ```bash
-    sudo ufw allow from 192.168.1.0/24
-    ```
+5.34. **Download with resume**
+```bash
+wget -c url
+```
 
-11. **Allow port from IP**
-    ```bash
-    sudo ufw allow from 192.168.1.10 to any port 22
-    ```
+5.35. **Download with curl**
+```bash
+curl -O url
+```
 
-12. **Delete rule**
-    ```bash
-    sudo ufw delete allow 80
-    ```
+5.36. **MD5 checksum**
+```bash
+md5sum filename
+```
 
-13. **Reset firewall**
-    ```bash
-    sudo ufw reset
-    ```
-
-14. **Reload firewall**
-    ```bash
-    sudo ufw reload
-    ```
-
-15. **Default deny incoming**
-    ```bash
-    sudo ufw default deny incoming
-    ```
-
-16. **Default allow outgoing**
-    ```bash
-    sudo ufw default allow outgoing
-    ```
+5.37. **SHA256 checksum**
+```bash
+sha256sum filename
+```
 
 ---
 
-## Git
+## 6. Processes
 
-1. **Init repo**
-   ```bash
-   git init
-   ```
+6.1. **List processes**
+```bash
+ps aux | grep name
+```
 
-2. **Clone repo**
-   ```bash
-   git clone url
-   ```
+6.2. **Top processes**
+```bash
+htop
+```
 
-3. **Clone branch**
-   ```bash
-   git clone -b branchname url
-   ```
+6.3. **Process tree**
+```bash
+pstree
+```
 
-4. **Check status**
-   ```bash
-   git status
-   ```
+6.4. **List process by user**
+```bash
+ps -u username
+```
 
-5. **Add file**
-   ```bash
-   git add filename
-   ```
+6.5. **Kill process**
+```bash
+kill pid
+```
 
-6. **Add all**
-   ```bash
-   git add .
-   ```
+6.6. **Kill by name**
+```bash
+pkill name
+```
 
-7. **Commit**
-   ```bash
-   git commit -m "message"
-   ```
+6.7. **Background process**
+```bash
+command &
+```
 
-8. **Push**
-   ```bash
-   git push origin branchname
-   ```
+6.8. **No hangup background**
+```bash
+nohup command &
+```
 
-9. **Pull**
-   ```bash
-   git pull
-   ```
+6.9. **List jobs**
+```bash
+jobs
+```
 
-10. **Fetch**
-    ```bash
-    git fetch
-    ```
+6.10. **Bring job to foreground**
+```bash
+fg %1
+```
 
-11. **Merge**
-    ```bash
-    git merge branchname
-    ```
+6.11. **Send job to background**
+```bash
+bg %1
+```
 
-12. **Branches**
-    ```bash
-    git branch
-    ```
+6.12. **Kill job**
+```bash
+kill %1
+```
 
-13. **New branch**
-    ```bash
-    git checkout -b branchname
-    ```
+6.13. **Nice process**
+```bash
+nice -n 10 command
+```
 
-14. **Switch branch**
-    ```bash
-    git checkout branchname
-    ```
+6.14. **Change priority**
+```bash
+renice 10 -p pid
+```
 
-15. **Delete branch**
-    ```bash
-    git branch -d branchname
-    ```
+6.15. **Zombie processes**
+```bash
+ps aux | grep zombie
+```
 
-16. **Force delete branch**
-    ```bash
-    git branch -D branchname
-    ```
+6.16. **Parent process ID**
+```bash
+ps -o ppid= -p pid
+```
 
-17. **Log**
-    ```bash
-    git log
-    ```
+6.17. **Process runtime**
+```bash
+ps -eo pid,etime
+```
 
-18. **Short log**
-    ```bash
-    git log --oneline
-    ```
+6.18. **List open files**
+```bash
+lsof
+```
 
-19. **Diff**
-    ```bash
-    git diff
-    ```
+6.19. **Files by process**
+```bash
+lsof -p pid
+```
 
-20. **Stash**
-    ```bash
-    git stash
-    ```
-
-21. **Pop stash**
-    ```bash
-    git stash pop
-    ```
-
-22. **List stash**
-    ```bash
-    git stash list
-    ```
-
-23. **Tag**
-    ```bash
-    git tag v1.0.0
-    ```
-
-24. **Push tags**
-    ```bash
-    git push --tags
-    ```
-
-25. **Remote**
-    ```bash
-    git remote -v
-    ```
-
-26. **Add remote**
-    ```bash
-    git remote add origin url
-    ```
-
-27. **Set upstream**
-    ```bash
-    git branch -u origin/branchname
-    ```
-
-28. **Reset to commit**
-    ```bash
-    git reset --hard HEAD~1
-    ```
-
-29. **Clean untracked**
-    ```bash
-    git clean -fd
-    ```
-
-30. **Ignore permissions**
-    ```bash
-    git config core.fileMode false
-    ```
+6.20. **Port by process**
+```bash
+lsof -i :port
+```
 
 ---
 
-## Tar / Zip
+## 7. Firewall (UFW)
 
-1. **Create tar.gz**
-   ```bash
-   tar -czvf name.tar.gz folder/
-   ```
+7.1. **Enable**
+```bash
+sudo ufw enable
+```
 
-2. **Create tar.bz2**
-   ```bash
-   tar -cjvf name.tar.bz2 folder/
-   ```
+7.2. **Disable**
+```bash
+sudo ufw disable
+```
 
-3. **Extract tar.gz**
-   ```bash
-   tar -xzvf name.tar.gz
-   ```
+7.3. **Status**
+```bash
+sudo ufw status
+```
 
-4. **Extract tar.bz2**
-   ```bash
-   tar -xjvf name.tar.bz2
-   ```
+7.4. **Status verbose**
+```bash
+sudo ufw status verbose
+```
 
-5. **List tar contents**
-   ```bash
-   tar -tzf name.tar.gz
-   ```
+7.5. **Allow port**
+```bash
+sudo ufw allow 22
+```
 
-6. **Extract to folder**
-   ```bash
-   tar -xzvf name.tar.gz -C folder/
-   ```
+7.6. **Deny port**
+```bash
+sudo ufw deny 80
+```
 
-7. **Create zip**
-   ```bash
-   zip -r name.zip folder/
-   ```
+7.7. **Allow service**
+```bash
+sudo ufw allow ssh
+```
 
-8. **Extract zip**
-   ```bash
-   unzip name.zip
-   ```
+7.8. **Deny service**
+```bash
+sudo ufw deny http
+```
 
-9. **Extract to folder**
-   ```bash
-   unzip name.zip -d folder/
-   ```
+7.9. **Allow IP**
+```bash
+sudo ufw allow from 192.168.1.10
+```
 
-10. **List zip contents**
-    ```bash
-    unzip -l name.zip
-    ```
+7.10. **Allow subnet**
+```bash
+sudo ufw allow from 192.168.1.0/24
+```
+
+7.11. **Allow port from IP**
+```bash
+sudo ufw allow from 192.168.1.10 to any port 22
+```
+
+7.12. **Delete rule**
+```bash
+sudo ufw delete allow 80
+```
+
+7.13. **Reset firewall**
+```bash
+sudo ufw reset
+```
+
+7.14. **Reload firewall**
+```bash
+sudo ufw reload
+```
+
+7.15. **Default deny incoming**
+```bash
+sudo ufw default deny incoming
+```
+
+7.16. **Default allow outgoing**
+```bash
+sudo ufw default allow outgoing
+```
 
 ---
 
-## Text Editing
+## 8. Git
 
-1. **Nano save and exit**
-   ```bash
-   Ctrl+O, Enter, Ctrl+X
-   ```
+8.1. **Init repo**
+```bash
+git init
+```
 
-2. **Nano search**
-   ```bash
-   Ctrl+W
-   ```
+8.2. **Clone repo**
+```bash
+git clone url
+```
 
-3. **Vim save and exit**
-   ```bash
-   :wq
-   ```
+8.3. **Clone branch**
+```bash
+git clone -b branchname url
+```
 
-4. **Vim exit without saving**
-   ```bash
-   :q!
-   ```
+8.4. **Check status**
+```bash
+git status
+```
 
-5. **Vim insert mode**
-   ```bash
-   i
-   ```
+8.5. **Add file**
+```bash
+git add filename
+```
 
-6. **Vim command mode**
-   ```bash
-   Esc
-   ```
+8.6. **Add all**
+```bash
+git add .
+```
 
-7. **Vim save**
-   ```bash
-   :w
-   ```
+8.7. **Commit**
+```bash
+git commit -m "message"
+```
 
-8. **Vim search**
-   ```bash
-   /text
-   ```
+8.8. **Push**
+```bash
+git push origin branchname
+```
 
-9. **Vim find next**
-   ```bash
-   n
-   ```
+8.9. **Pull**
+```bash
+git pull
+```
 
-10. **Sed replace**
-    ```bash
-    sed -i 's/old/new/g' file
-    ```
+8.10. **Fetch**
+```bash
+git fetch
+```
 
-11. **Sed delete line**
-    ```bash
-    sed -i '/pattern/d' file
-    ```
+8.11. **Merge**
+```bash
+git merge branchname
+```
 
-12. **Awk print column**
-    ```bash
-    awk '{print $1}' file
-    ```
+8.12. **Branches**
+```bash
+git branch
+```
 
-13. **Awk find**
-    ```bash
-    awk '/pattern/' file
-    ```
+8.13. **New branch**
+```bash
+git checkout -b branchname
+```
 
-14. **Cut column**
-    ```bash
-    cut -d',' -f1 file
-    ```
+8.14. **Switch branch**
+```bash
+git checkout branchname
+```
 
-15. **Sort lines**
-    ```bash
-    sort file
-    ```
+8.15. **Delete branch**
+```bash
+git branch -d branchname
+```
 
-16. **Unique lines**
-    ```bash
-    uniq file
-    ```
+8.16. **Force delete branch**
+```bash
+git branch -D branchname
+```
 
-17. **Count lines**
-    ```bash
-    wc -l file
-    ```
+8.17. **Log**
+```bash
+git log
+```
 
-18. **Echo with newline**
-    ```bash
-    echo -e "line1\nline2"
-    ```
+8.18. **Short log**
+```bash
+git log --oneline
+```
 
-19. **Read file into var**
-    ```bash
-    var=$(cat file)
-    ```
+8.19. **Diff**
+```bash
+git diff
+```
 
-20. **Here document**
-    ```bash
-    cat <<EOF > file
-    content
-    EOF
-    ```
+8.20. **Stash**
+```bash
+git stash
+```
+
+8.21. **Pop stash**
+```bash
+git stash pop
+```
+
+8.22. **List stash**
+```bash
+git stash list
+```
+
+8.23. **Tag**
+```bash
+git tag v1.0.0
+```
+
+8.24. **Push tags**
+```bash
+git push --tags
+```
+
+8.25. **Remote**
+```bash
+git remote -v
+```
+
+8.26. **Add remote**
+```bash
+git remote add origin url
+```
+
+8.27. **Set upstream**
+```bash
+git branch -u origin/branchname
+```
+
+8.28. **Reset to commit**
+```bash
+git reset --hard HEAD~1
+```
+
+8.29. **Clean untracked**
+```bash
+git clean -fd
+```
+
+8.30. **Ignore permissions**
+```bash
+git config core.fileMode false
+```
+
+---
+
+## 9. Tar / Zip
+
+9.1. **Create tar.gz**
+```bash
+tar -czvf name.tar.gz folder/
+```
+
+9.2. **Create tar.bz2**
+```bash
+tar -cjvf name.tar.bz2 folder/
+```
+
+9.3. **Extract tar.gz**
+```bash
+tar -xzvf name.tar.gz
+```
+
+9.4. **Extract tar.bz2**
+```bash
+tar -xjvf name.tar.bz2
+```
+
+9.5. **List tar contents**
+```bash
+tar -tzf name.tar.gz
+```
+
+9.6. **Extract to folder**
+```bash
+tar -xzvf name.tar.gz -C folder/
+```
+
+9.7. **Create zip**
+```bash
+zip -r name.zip folder/
+```
+
+9.8. **Extract zip**
+```bash
+unzip name.zip
+```
+
+9.9. **Extract zip to folder**
+```bash
+unzip name.zip -d folder/
+```
+
+9.10. **List zip contents**
+```bash
+unzip -l name.zip
+```
+
+---
+
+## 10. Text Editing
+
+10.1. **Nano save and exit**
+```
+Ctrl+O, Enter, Ctrl+X
+```
+
+10.2. **Nano search**
+```
+Ctrl+W
+```
+
+10.3. **Vim save and exit**
+```bash
+:wq
+```
+
+10.4. **Vim exit without saving**
+```bash
+:q!
+```
+
+10.5. **Vim insert mode**
+```
+i
+```
+
+10.6. **Vim command mode**
+```
+Esc
+```
+
+10.7. **Vim save**
+```bash
+:w
+```
+
+10.8. **Vim search**
+```bash
+/text
+```
+
+10.9. **Vim find next**
+```
+n
+```
+
+10.10. **Sed replace**
+```bash
+sed -i 's/old/new/g' file
+```
+
+10.11. **Sed delete line**
+```bash
+sed -i '/pattern/d' file
+```
+
+10.12. **Awk print column**
+```bash
+awk '{print $1}' file
+```
+
+10.13. **Awk find**
+```bash
+awk '/pattern/' file
+```
+
+10.14. **Cut column**
+```bash
+cut -d',' -f1 file
+```
+
+10.15. **Sort lines**
+```bash
+sort file
+```
+
+10.16. **Unique lines**
+```bash
+uniq file
+```
+
+10.17. **Count lines**
+```bash
+wc -l file
+```
+
+10.18. **Echo with newline**
+```bash
+echo -e "line1\nline2"
+```
+
+10.19. **Read file into var**
+```bash
+var=$(cat file)
+```
+
+10.20. **Here document**
+```bash
+cat <<EOF > file
+content
+EOF
+```
