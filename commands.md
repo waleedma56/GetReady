@@ -2,11 +2,11 @@
 
 ## Index
 
-1. [Users](#1-users) · 2. [System](#2-system) · 3. [Docker](#3-docker) · 4. [Network](#4-network) · 5. [Files](#5-files) · 6. [File Access](#6-file-access) · 7. [Processes](#7-processes) · 8. [Firewall](#8-firewall-ufw) · 9. [Git](#9-git) · 10. [SSH](#10-ssh) · 11. [Tar / Zip](#11-tar--zip) · 12. [Text Editing](#12-text-editing)
+1. [👤 Users](#users) · 2. [🖥️ System](#system) · 3. [🐳 Docker](#docker) · 4. [🌐 Network](#network) · 5. [📁 Files](#files) · 6. [🌐 File Access](#file-access) · 7. [⚙️ Processes](#processes) · 8. [🔥 Firewall](#firewall-ufw) · 9. [📚 Git](#git) · 10. [🔐 SSH](#ssh) · 11. [📦 Tar / Zip](#tar--zip) · 12. [✏️ Text Editing](#text-editing)
 
 ---
 
-## 1. 👤 Users
+## 👤 Users
 
 1. **Create user**
 ```bash
@@ -65,7 +65,7 @@ su - username
 
 ---
 
-## 2. 🖥️ System
+## 🖥️ System
 
 1. **Update packages**
 ```bash
@@ -219,7 +219,7 @@ sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
 
 ---
 
-## 3. 🐳 Docker
+## 🐳 Docker
 
 1. **Install Docker**
 ```bash
@@ -394,7 +394,7 @@ docker compose logs -f
 
 ---
 
-## 4. 🌐 Network
+## 🌐 Network
 
 1. **Check IP**
 ```bash
@@ -538,7 +538,7 @@ sudo iptables -L -n
 
 ---
 
-## 5. 📁 Files
+## 📁 Files
 
 1. **Print working directory**
 ```bash
@@ -717,7 +717,7 @@ rm -rf dirname
 
 ---
 
-## 6. 🌐 File Access
+## 🌐 File Access
 
 ### Option 1: File Browser (Best for file management)
 
@@ -786,7 +786,7 @@ Drag-and-drop uploads and downloads.
 
 ---
 
-## 7. ⚙️ Processes
+## ⚙️ Processes
 
 1. **List all processes**
 ```bash
@@ -895,7 +895,7 @@ lsof -i :port
 
 ---
 
-## 8. 🔥 Firewall (UFW)
+## 🔥 Firewall (UFW)
 
 1. **Enable**
 ```bash
@@ -979,7 +979,7 @@ sudo ufw default allow outgoing
 
 ---
 
-## 9. 📚 Git
+## 📚 Git
 
 1. **Init repo**
 ```bash
@@ -1133,7 +1133,7 @@ git config core.fileMode false
 
 ---
 
-## 10. 🔐 SSH
+## 🔐 SSH
 
 1. **Connect to host**
 ```bash
@@ -1237,7 +1237,7 @@ ssh -X user@hostname
 
 ---
 
-## 11. 📦 Tar / Zip
+## 📦 Tar / Zip
 
 1. **Create tar.gz**
 ```bash
@@ -1291,7 +1291,7 @@ unzip -l name.zip
 
 ---
 
-## 12. ✏️ Text Editing
+## ✏️ Text Editing
 
 1. **Nano save and exit**
 ```
