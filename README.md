@@ -4,6 +4,11 @@ Handy ready-to-run shell scripts for quickly setting up and preparing Linux mach
 
 Each script is designed to be run **directly from a single link** — no cloning, no copying files around. Just paste one command on any Linux box and go.
 
+> **Prerequisites:** `curl` or `wget` must be available on the system. On a truly minimal install you may need to install one first:
+> ```bash
+> apt update && apt install -y curl wget
+> ```
+
 ---
 
 ## Quick start — the menu (recommended)

@@ -44,7 +44,7 @@ is_installed() {
     STATUS_DETAIL=""
     case "$1" in
         essentials)
-            local tools="curl wget git nano vim htop zip unzip nmap traceroute iftop tcpdump dig ifconfig ping gpg sudo lsb_release"
+            local tools="curl wget git nano vim htop zip unzip nmap traceroute iftop tcpdump dig ifconfig ping gpg sudo lsb_release rsync tree ncdu python3 python3-pip"
             local total=0 have=0 t
             for t in $tools; do
                 total=$((total + 1))
@@ -202,16 +202,34 @@ run_selected() {
     local any=0 i
     leave_raw
     printf '\033[H\033[J'
+
+    local order=()
+    local found_essentials=-1 found_docker=-1
     for i in "${!COMPONENTS[@]}"; do
         if [ "${SEL[$i]}" -eq 1 ]; then
-            any=1
-            if do_install "${LABELS[$i]}" "${SCRIPTS[$i]}"; then
-                printf "%b   Done: %s%b\n" "$GREEN" "${COMPONENTS[$i]}" "$RESET"
-                SEL[$i]=0
-            else
-                printf "%b   Errors while installing %s (see output above).%b\n" \
-                    "$RED" "${COMPONENTS[$i]}" "$RESET"
-            fi
+            case "${COMPONENTS[$i]}" in
+                essentials) found_essentials=$i ;;
+                docker)      found_docker=$i ;;
+            esac
+        fi
+    done
+
+    for i in "${!COMPONENTS[@]}"; do
+        if [ "${SEL[$i]}" -eq 1 ] && [ "$i" -ne "$found_essentials" ] && [ "$i" -ne "$found_docker" ]; then
+            order+=("$i")
+        fi
+    done
+    if [ "$found_essentials" -ge 0 ]; then order+=("$found_essentials"); fi
+    if [ "$found_docker" -ge 0 ]; then order+=("$found_docker"); fi
+
+    for i in "${order[@]}"; do
+        any=1
+        if do_install "${LABELS[$i]}" "${SCRIPTS[$i]}"; then
+            printf "%b   Done: %s%b\n" "$GREEN" "${COMPONENTS[$i]}" "$RESET"
+            SEL[$i]=0
+        else
+            printf "%b   Errors while installing %s (see output above).%b\n" \
+                "$RED" "${COMPONENTS[$i]}" "$RESET"
         fi
     done
     if [ "$any" -eq 0 ]; then
