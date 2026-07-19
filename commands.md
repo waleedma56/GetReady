@@ -788,102 +788,107 @@ Drag-and-drop uploads and downloads.
 
 ## 7. Processes
 
-1. **List processes**
+1. **List all processes**
+```bash
+ps aux
+```
+
+2. **Search process by name**
 ```bash
 ps aux | grep name
 ```
 
-2. **Top processes**
+3. **Top processes**
 ```bash
 htop
 ```
 
-3. **Process tree**
+4. **Process tree**
 ```bash
 pstree
 ```
 
-4. **List process by user**
+5. **List process by user**
 ```bash
 ps -u username
 ```
 
-5. **Kill process**
+6. **Kill process**
 ```bash
 kill pid
 ```
 
-6. **Kill by name**
+7. **Kill by name**
 ```bash
 pkill name
 ```
 
-7. **Background process**
+8. **Background process**
 ```bash
 command &
 ```
 
-8. **No hangup background**
+9. **No hangup background**
 ```bash
 nohup command &
 ```
 
-9. **List jobs**
+10. **List jobs**
 ```bash
 jobs
 ```
 
-10. **Bring job to foreground**
+11. **Bring job to foreground**
 ```bash
 fg %1
 ```
 
-11. **Send job to background**
+12. **Send job to background**
 ```bash
 bg %1
 ```
 
-12. **Kill job**
+13. **Kill job**
 ```bash
 kill %1
 ```
 
-13. **Nice process**
+14. **Nice process**
 ```bash
 nice -n 10 command
 ```
 
-14. **Change priority**
+15. **Change priority**
 ```bash
 renice 10 -p pid
 ```
 
-15. **Zombie processes**
+16. **Zombie processes**
 ```bash
 ps aux | grep zombie
 ```
 
-16. **Parent process ID**
+17. **Parent process ID**
 ```bash
 ps -o ppid= -p pid
 ```
 
-17. **Process runtime**
+18. **Process runtime**
 ```bash
 ps -eo pid,etime
 ```
 
-18. **List open files**
+19. **List open files**
 ```bash
 lsof
 ```
 
-19. **Files by process**
+20. **Files by process**
 ```bash
 lsof -p pid
 ```
 
-20. **Port by process**
+21. **Port by process**
 ```bash
 lsof -i :port
 ```
