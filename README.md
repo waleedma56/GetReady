@@ -53,6 +53,19 @@ curl -fsSL https://raw.githubusercontent.com/waleedma56/GetReady/main/essentials
 > wget -qO- https://raw.githubusercontent.com/waleedma56/GetReady/main/essentials.sh | sudo bash
 > ```
 
+### `users.sh`
+Creates a new user with **SSH access** and **sudo privileges**. Prompts for username,
+supports pasting public keys for authorized_keys, and optionally disables root SSH login.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/waleedma56/GetReady/main/users.sh | sudo bash
+```
+
+> `wget` alternative:
+> ```bash
+> wget -qO- https://raw.githubusercontent.com/waleedma56/GetReady/main/users.sh | sudo bash
+> ```
+
 ### `docker.sh`
 Installs **Docker Engine + Docker Compose (v2 plugin)** on **Ubuntu / Debian** from Docker's
 official apt repository, enables the service, adds your user to the `docker` group, then

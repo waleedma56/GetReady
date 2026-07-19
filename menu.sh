@@ -26,9 +26,9 @@ fi
 
 # --- Component catalog ----------------------------------------------------
 # Parallel arrays: name / human label / remote script file.
-COMPONENTS=("essentials" "docker")
-LABELS=("Essential CLI & networking tools" "Docker Engine + Docker Compose")
-SCRIPTS=("essentials.sh"                    "docker.sh")
+COMPONENTS=("essentials" "users" "docker")
+LABELS=("Essential CLI & networking tools" "SSH + Sudo user creation" "Docker Engine + Docker Compose")
+SCRIPTS=("essentials.sh" "users.sh" "docker.sh")
 
 declare -a INSTALLED    # 1 = installed, 0 = missing
 declare -a DETAILS      # short status detail string
@@ -54,6 +54,10 @@ is_installed() {
             done
             STATUS_DETAIL="${have}/${total} tools present"
             if [ "$have" -eq "$total" ]; then return 0; else return 1; fi
+            ;;
+        users)
+            STATUS_DETAIL="interactive - not auto-detected"
+            return 1
             ;;
         docker)
             if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
@@ -204,22 +208,24 @@ run_selected() {
     printf '\033[H\033[J'
 
     local order=()
-    local found_essentials=-1 found_docker=-1
+    local found_essentials=-1 found_users=-1 found_docker=-1
     for i in "${!COMPONENTS[@]}"; do
         if [ "${SEL[$i]}" -eq 1 ]; then
             case "${COMPONENTS[$i]}" in
                 essentials) found_essentials=$i ;;
-                docker)      found_docker=$i ;;
+                users)      found_users=$i ;;
+                docker)     found_docker=$i ;;
             esac
         fi
     done
 
     for i in "${!COMPONENTS[@]}"; do
-        if [ "${SEL[$i]}" -eq 1 ] && [ "$i" -ne "$found_essentials" ] && [ "$i" -ne "$found_docker" ]; then
+        if [ "${SEL[$i]}" -eq 1 ] && [ "$i" -ne "$found_essentials" ] && [ "$i" -ne "$found_users" ] && [ "$i" -ne "$found_docker" ]; then
             order+=("$i")
         fi
     done
     if [ "$found_essentials" -ge 0 ]; then order+=("$found_essentials"); fi
+    if [ "$found_users" -ge 0 ]; then order+=("$found_users"); fi
     if [ "$found_docker" -ge 0 ]; then order+=("$found_docker"); fi
 
     for i in "${order[@]}"; do
