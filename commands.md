@@ -2,7 +2,7 @@
 
 ## Index
 
-1. [Users](#1-users) · 2. [System](#2-system) · 3. [Docker](#3-docker) · 4. [Network](#4-network) · 5. [Files](#5-files) · 6. [Processes](#6-processes) · 7. [Firewall](#7-firewall-ufw) · 8. [Git](#8-git) · 9. [SSH](#9-ssh) · 10. [Tar / Zip](#10-tar--zip) · 11. [Text Editing](#11-text-editing)
+1. [Users](#1-users) · 2. [System](#2-system) · 3. [Docker](#3-docker) · 4. [Network](#4-network) · 5. [Files](#5-files) · 6. [File Access](#6-file-access) · 7. [Processes](#7-processes) · 8. [Firewall](#8-firewall-ufw) · 9. [Git](#9-git) · 10. [SSH](#10-ssh) · 11. [Tar / Zip](#11-tar--zip) · 12. [Text Editing](#12-text-editing)
 
 ---
 
@@ -712,7 +712,76 @@ rm -rf dirname
 
 ---
 
-## 6. Processes
+## 6. File Access
+
+### Option 1: File Browser (Best for file management)
+
+Install filebrowser:
+```bash
+curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
+```
+
+Run in current directory:
+```bash
+filebrowser -r .
+```
+
+Run with custom port:
+```bash
+filebrowser -r . -p 8080
+```
+
+Open in browser:
+```
+http://SERVER-IP:8080
+```
+
+Default login:
+```
+Username: admin
+Password: admin
+```
+(Will prompt to change password)
+
+---
+
+### Option 2: Python HTTP Server (Download only)
+
+Start server:
+```bash
+python3 -m http.server 8000
+```
+
+Open in browser:
+```
+http://SERVER-IP:8000
+```
+(Directory listing only, no uploads)
+
+---
+
+### Option 3: SFTP (Best for developers)
+
+Already have SSH? You already have SFTP.
+
+**Windows clients:**
+- WinSCP
+- FileZilla
+- VS Code Remote SSH
+
+Connect with:
+```
+Host: SERVER-IP
+Port: 22
+Username: youruser
+Password: ****
+```
+
+Drag-and-drop uploads and downloads.
+
+---
+
+## 7. Processes
 
 1. **List processes**
 ```bash
@@ -816,7 +885,7 @@ lsof -i :port
 
 ---
 
-## 7. Firewall (UFW)
+## 8. Firewall (UFW)
 
 1. **Enable**
 ```bash
@@ -900,7 +969,7 @@ sudo ufw default allow outgoing
 
 ---
 
-## 8. Git
+## 9. Git
 
 1. **Init repo**
 ```bash
@@ -1054,7 +1123,7 @@ git config core.fileMode false
 
 ---
 
-## 9. SSH
+## 10. SSH
 
 1. **Connect to host**
 ```bash
@@ -1158,7 +1227,7 @@ ssh -X user@hostname
 
 ---
 
-## 10. Tar / Zip
+## 11. Tar / Zip
 
 1. **Create tar.gz**
 ```bash
@@ -1212,7 +1281,7 @@ unzip -l name.zip
 
 ---
 
-## 11. Text Editing
+## 12. Text Editing
 
 1. **Nano save and exit**
 ```
